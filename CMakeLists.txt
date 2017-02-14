@@ -31,7 +31,17 @@ SET(SLT_BUILT_DIR "" CACHE PATH "Location of the built slt toolset")
 
 include_directories(${SLT_BUILT_DIR}/include src)
 
+
+
+add_custom_target(build_assets
+  COMMAND python ${SLT_BUILT_DIR}/bin/Release/build_assets.py
+  WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+)
+
 add_executable(slt_sample 
   src/main.cpp)
 
-target_link_libraries(slt_sample ${SLT_BUILT_DIR}/lib/$<CONFIG>/slt_common.lib)
+target_link_libraries(slt_sample 
+  ${SLT_BUILT_DIR}/lib/$<CONFIG>/slt_common.lib
+  ${SLT_BUILT_DIR}/lib/glfw3.lib
+  ${SLT_BUILT_DIR}/lib/$<CONFIG>/slt_runtime_glfw.lib)

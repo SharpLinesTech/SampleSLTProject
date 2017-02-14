@@ -1,0 +1,25 @@
+{
+  description:
+    "Draw a standard unskinned object."
+
+  shaders: [ 
+    {
+      type: VERTEX
+      sources: [
+        "render_programs/shaders/version.glsl"
+        "render_programs/uniform_blocks/camera_data.glsl"
+        "render_programs/uniform_blocks/object_data.glsl"
+        "render_programs/shaders/object.vert"
+      ]
+    }
+
+    {
+      type: FRAGMENT
+      sources: [
+        "render_programs/shaders/version.glsl"
+        "render_programs/uniform_blocks/object_data.glsl"
+        "render_programs/shaders/object.frag"
+      ]
+    }
+  ]
+}
